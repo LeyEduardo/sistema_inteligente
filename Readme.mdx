@@ -50,24 +50,40 @@ Sensores → ESP32 → Wi-Fi → Plataforma Blynk → Smartphone
 O ESP32 coleta os dados dos sensores e envia para o servidor do Blynk pela conexão Wi-Fi, permitindo acesso remoto pelo celular.
 
 
-DIAGRAMA ELETRICO (Descrição das Ligações)
+DIAGRAMA ELETRICO 
+(Descrição das Ligações)
+
 Componente	Pino do ESP32
+
 DHT22	GPIO 2
+
 MQ-2 (A0)	GPIO 34
+
 BME280 / BMP280 (SDA)	GPIO 21
+
 BME280 / BMP280 (SCL)	GPIO 22
+
 Alimentação	3.3V / GND
+
 
 LISTA DE MATERIAL
 
 Quantidade	Componente
+
 1	ESP32
+
 1	Sensor DHT22
+
 1	Sensor MQ-2
+
 1	Sensor BME280 ou BMP280
+
 1	Resistor (10kΩ ou semelhante)
+
 1	Protoboard
+
 Jumpers	Cabos macho/macho ou macho/fêmea
+
 
 PARTE DE SOFTWARE
 
@@ -80,13 +96,21 @@ ESP32
 BIBLIOTECA UTILIZADA
 
 WiFi.h
+
 BlynkSimpleEsp32.h
+
 Wire.h
+
 Adafruit_Sensor.h
+
 DHT.h
+
 DHT_U.h
+
 Adafruit_BME280.h
+
 Adafruit_BMP280.h
+
 
 PLATAFORMA BLYNK
 
