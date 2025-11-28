@@ -1,144 +1,93 @@
-# Estação Metereológica
-## 1. Introdução
+Sistema Inteligente para Automação e Monitoramento de Condições Ambientais em Residências
+📌 Introdução
 
-minha intro
-[Link para o repositório](https://github.com/Ludmilahttps/EstacaoMeteorologica)
+Este projeto consiste no desenvolvimento de um sistema inteligente de monitoramento ambiental residencial, utilizando o microcontrolador ESP32 e sensores ambientais para coleta de dados em tempo real.
+O sistema é capaz de monitorar temperatura, umidade, pressão atmosférica e concentração de gás, exibindo as informações remotamente por meio da plataforma Blynk IoT.
 
-### Participantes 
-- Augusto Daleffe
-- Ludmila Silveira
-- Débora Castro
-- Eduardo Swarowsky
-- Vinicius Muchulski
+O projeto visa aumentar a segurança e o conforto dos ambientes residenciais, permitindo acompanhamento remoto das condições ambientais através do celular.
 
-### Diagrama de comunicação
-![diagrama_de_comunicacao](https://github.com/cyberdebb/estacao_meteorologica/assets/107296659/a105d673-0c97-417b-b6c3-62494302f3ab)
+DESCRIÇÃO DO PROJETO
 
-## 2. Materiais e métodos 
+O sistema é composto por:
 
-> Nota: Neste projeto, não foi utilizado o sensor de temperatura e pressão BMP280 por problemas na utilização do material. Porém, o hardware e o software permitem sua utilização para integração na estação meteorológica
+ESP32 como unidade de controle;
 
-Esta seção descreve detalhadamente os componentes e processos utilizados na construção e operação da estação meteorológica. 
+Sensor DHT22 para medir temperatura e umidade;
 
-### Caracterização do sistema embarcado
+Sensor MQ-2 para detecção de gases;
 
-- [**ESP32**](https://github.com/cyberdebb/estacao_meteorologica/blob/main/sensores/ESP32): Um módulo microcontrolador com Wi-Fi e Bluetooth integrados, ideal para aplicações IoT.
-- [**DHT11**](https://github.com/cyberdebb/estacao_meteorologica/blob/main/sensores/DHT11): Sensor de temperatura e umidade, usado para medições ambientais básicas.
-- [**Pluviômetro**](https://github.com/cyberdebb/estacao_meteorologica/blob/main/sensores/Pluviometro): Dispositivo utilizado para medir a quantidade de precipitação.
-- [**Anemômetro Arduino SV10**](https://github.com/cyberdebb/estacao_meteorologica/blob/main/sensores/Anemometro): Sensor utilizado para medir a velocidade do vento.
-- [**Indicador de direção do vento Arduino DV10**](https://github.com/cyberdebb/estacao_meteorologica/blob/main/sensores/Ind_Direcao_Vento): Sensor utilizado para determinar a direção do vento.
+Sensor BME280/BMP280 para leitura de pressão atmosférica;
 
-### Diagrama dos componentes
+Resistor para condicionamento de sinais;
 
-O diagrama abaixo define a configuração física utilizada e a interconexão dos componentes da estação meteorológica: 
-![Diagrama PI_Grande](https://github.com/cyberdebb/estacao_meteorologica/assets/107296659/c75c16e5-882f-4b96-8760-c9f6ee9439b8)
+Comunicação via Wi-Fi com a plataforma Blynk, que exibe os dados em tempo real pelo aplicativo.
 
-![Imagem do WhatsApp de 2024-06-15 à(s) 17 48 53_0760c21e](https://github.com/cyberdebb/estacao_meteorologica/assets/107296659/a055155b-81d3-48e2-a00d-33777d665640)
+O sistema atualiza os dados a cada 2 segundos e permite o monitoramento remoto via smartphone.
 
-### Configuração de Ambiente Local
-Para configurar o ambiente local, siga os passos abaixo. Este arquivo deve conter informações sensíveis como SSID e senha da rede WiFi, além da URL do servidor:
+Objetivos
+Objetivo geral
 
-1. Navegue até a pasta `main` do seu projeto e crie um arquivo chamado `settings.h`.
-2. Adicione as seguintes linhas ao arquivo:
-   
-   ```
-   const char* ssid = "SeuSSID";  // Substitua pelo SSID da sua rede
-   const char* password = "SuaSenha";  // Substitua pela senha da sua rede
-   String serverURL = "URLDoSeuServidor"; // Substitua pela URL do seu servidor
-   ```
+Desenvolver um sistema eficiente de monitoramento ambiental residencial utilizando IoT.
 
-### Configuração do ESP32
+Objetivos específicos
 
-#### Instalação do Driver para o ESP32
+Monitorar temperatura e umidade do ambiente;
 
-1. **Baixe e Instale o Driver:**
+Detectar presença de gases potencialmente perigosos;
 
-    - Antes de conectar o ESP32 ao seu computador, é necessário instalar o driver adequado para garantir que o dispositivo seja reconhecido corretamente. Você pode encontrar o driver específico para o ESP32 no seguinte link: [Instalação do Driver para ESP32 - RoboCore](https://www.robocore.net/tutoriais/instalando-driver-do-nodemcu)
-    - Siga as instruções no site para baixar e instalar o driver correspondente ao seu sistema operacional.
+Medir pressão atmosférica;
 
-2. **Conectar o ESP32 ao Computador:**
+Enviar dados em tempo real para o Blynk;
 
-    - Após a instalação do driver, conecte o ESP32 ao computador usando um cabo USB. Se tudo estiver correto, o dispositivo deverá ser reconhecido e uma nova porta COM será listada no seu sistema.
+Permitir visualização remota via aplicativo móvel.
 
-#### Configuração no Arduino IDE
+Arquitetura do Sistema
+Diagrama de Comunicação (Descrição)
+Sensores → ESP32 → Wi-Fi → Plataforma Blynk → Smartphone
+O ESP32 coleta os dados dos sensores e envia para o servidor do Blynk pela conexão Wi-Fi, permitindo acesso remoto pelo celular.
 
-3. **Instale o Arduino IDE:**
 
-    - Se ainda não instalou, baixe e instale o Arduino IDE diretamente do site oficial: [Arduino - Software](https://www.arduino.cc/en/software)
+Diagrama Elétrico (Descrição das Ligações)
+Componente	Pino do ESP32
+DHT22	GPIO 2
+MQ-2 (A0)	GPIO 34
+BME280 / BMP280 (SDA)	GPIO 21
+BME280 / BMP280 (SCL)	GPIO 22
+Alimentação	3.3V / GND
 
-4. **Adicione a URL de Gerenciamento de Placas do ESP32:**
+Lista de Materiais
+Quantidade	Componente
+1	ESP32
+1	Sensor DHT22
+1	Sensor MQ-2
+1	Sensor BME280 ou BMP280
+1	Resistor (10kΩ ou semelhante)
+1	Protoboard
+Jumpers	Cabos macho/macho ou macho/fêmea
 
-    - Abra o Arduino IDE.
-    - Vá em **Arquivo > Preferências**.
-    - No campo "URLs Adicionais de Gerenciadores de Placas", adicione a seguinte URL para permitir a instalação do pacote do ESP32:
+Parte de Software
+Softwares Utilizados
+Software	Versão aproximada
+Arduino IDE
+Blynk IoT	Atual
+ESP32 
 
-		```
-		https://dl.espressif.com/dl/package_esp32_index.json
-		```
+Bibliotecas Utilizadas
+WiFi.h
+BlynkSimpleEsp32.h
+Wire.h
+Adafruit_Sensor.h
+DHT.h
+DHT_U.h
+Adafruit_BME280.h
+Adafruit_BMP280.h
 
-5. **Instale o Pacote do ESP32:**
+Plataforma Blynk
 
-    - Acesse **Ferramentas > Placa: > Gerenciador de Placas**.
-    - Na barra de pesquisa, digite "ESP32".
-    - Localize "esp32 by Espressif Systems" e clique em "Instalar".
+Foram utilizados os seguintes pinos virtuais:
 
-6. **Selecionar a Placa ESP32 e a Porta COM:**
-
-    - Após a instalação do pacote, vá em **Ferramentas > Placa** e selecione o modelo do seu ESP32 na lista sob o título "ESP32-WROOM-DA Module".
-    - Vá em **Ferramentas > Porta** e selecione a porta COM que aparece (associada ao ESP32).
-
-### Instalação das bibliotecas necessárias no Arduino IDE
-
-Para instalar todas as bibliotecas necessárias, abra o Arduino IDE, vá em Sketch > Incluir Biblioteca > Gerenciar Bibliotecas, e procure e instale as seguintes bibliotecas:
-
-- Adafruit BMP280 Library by Adafruit
-- Adafruit BusIO by Adafruit
-- Adafruit Unified Sensor by Adafruit
-- ArduinoJson by Benoit
-- DHT sensor library by Adafruit
-
-### Descrição dos Problemas e Soluções 
-
-#### Problemas com a memória flash do esp32
-
-**Descrição do Problema:** Às vezes, pode ser necessário apagar a memória flash do ESP32 para resolver problemas de estabilidade ou falhas ao carregar novos programas. Esse procedimento torna-se essencial especialmente se o botão de reset físico (RST) não estiver funcionando, impedindo um reinício suave do dispositivo.
-
-**Solução:**
-
-1. **Instalar a Biblioteca esptool:** O esptool é uma ferramenta em linha de comando que permite a comunicação com o chipset ESP para apagar ou gravar a memória flash.
-
-	 - Instale o esptool usando o pip, o gerenciador de pacotes Python:
-
-		```
-		 pip install esptool
-		```  
-
-2. **Apagar a Memória Flash:** Para apagar completamente a memória flash do ESP32, siga os passos abaixo. Este processo é útil para limpar configurações antigas que podem estar causando conflitos.
-
-    - Abra o terminal ou prompt de comando.
-    - Execute o seguinte comando para apagar a memória flash:
-
-		```
-		python -m esptool --chip esp32 erase_flash
-		```
-
-3. **Verificação de Sucesso:**
-
-    - Após apagar a memória flash, reconecte o ESP32 ao seu computador e tente carregar um novo programa. Se o programa carregar e executar corretamente, isso indica que a memória foi apagada com sucesso.
-
-### Foto da montagem física
-![IMG_2254](https://github.com/cyberdebb/estacao_meteorologica/assets/107296659/c5bda040-61ea-4b4f-9dab-8303a7e4922a)
-
-### Vídeo do sistema funcionando
-Este vídeo demonstra a operação da estação meteorológica, enfocando a coleta e o registro de dados em tempo real:
-https://youtu.be/Y84vYU7VSpE
-
-### Orçamento
-O levantamento dos preços de cada componente foi realizado através de pesquisa na internet, consultando sites especializados na venda de componentes eletrônicos como: Amazon, Eletrogate e Usinainfo. Como referência, o orçamento foi levantado em junho/2024. Todos os componentes utilizados na construção da estação e descritos na subseção de caracterização do sistema embarcado estão compilados na tabela:
-
-| Componente                                                                           | Preço    | Fonte      |
-| ------------------------------------------------------------------------------------ | -------- | ---------- |
-| ESP32	                                                                               | R$49.90  | Amazon     |
-| DHT11                                                                                | R$10.36  | Eletrogate |
-| BMP280                                                                               | R$7.50   | Eletrogate |
-| Anemômetro Arduino + Indicador de Direção do Vento para Estação Meteorológica SVDV10 | R$749.55 | Usinainfo  |
+Variável	Virtual Pin
+Temperatura	V0
+Umidade	V1
+Pressão	V2
+Gás	V3
