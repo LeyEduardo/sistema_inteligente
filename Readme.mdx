@@ -2,7 +2,7 @@ Sistema Inteligente para Automação e Monitoramento de Condições Ambientais e
 
 
 
- Introdução
+ INTRODUÇÃO
 
 Este projeto consiste no desenvolvimento de um sistema inteligente de monitoramento ambiental residencial, utilizando o microcontrolador ESP32 e sensores ambientais para coleta de dados em tempo real.
 O sistema é capaz de monitorar temperatura, umidade, pressão atmosférica e concentração de gás, exibindo as informações remotamente por meio da plataforma Blynk IoT.
@@ -27,12 +27,11 @@ Comunicação via Wi-Fi com a plataforma Blynk, que exibe os dados em tempo real
 
 O sistema atualiza os dados a cada 2 segundos e permite o monitoramento remoto via smartphone.
 
-Objetivos
-Objetivo geral
+OBJETIVO GERAL
 
 Desenvolver um sistema eficiente de monitoramento ambiental residencial utilizando IoT.
 
-Objetivos específicos
+OBJETIVO ESPECIFICO
 
 Monitorar temperatura e umidade do ambiente;
 
@@ -44,13 +43,13 @@ Enviar dados em tempo real para o Blynk;
 
 Permitir visualização remota via aplicativo móvel.
 
-Arquitetura do Sistema
+ARQUITETURA DO SISTEMA
 Diagrama de Comunicação (Descrição)
 Sensores → ESP32 → Wi-Fi → Plataforma Blynk → Smartphone
 O ESP32 coleta os dados dos sensores e envia para o servidor do Blynk pela conexão Wi-Fi, permitindo acesso remoto pelo celular.
 
 
-Diagrama Elétrico (Descrição das Ligações)
+DIAGRAMA ELETRICO (Descrição das Ligações)
 Componente	Pino do ESP32
 DHT22	GPIO 2
 MQ-2 (A0)	GPIO 34
@@ -58,7 +57,7 @@ BME280 / BMP280 (SDA)	GPIO 21
 BME280 / BMP280 (SCL)	GPIO 22
 Alimentação	3.3V / GND
 
-Lista de Materiais
+LISTA DE MATERIAL
 Quantidade	Componente
 1	ESP32
 1	Sensor DHT22
@@ -68,14 +67,14 @@ Quantidade	Componente
 1	Protoboard
 Jumpers	Cabos macho/macho ou macho/fêmea
 
-Parte de Software
+PARTE DE SOFTWARE
 Softwares Utilizados
 Software	Versão aproximada
 Arduino IDE
 Blynk IoT	Atual
 ESP32 
 
-Bibliotecas Utilizadas
+BIBLIOTECA UTILIZADA
 WiFi.h
 BlynkSimpleEsp32.h
 Wire.h
@@ -85,7 +84,7 @@ DHT_U.h
 Adafruit_BME280.h
 Adafruit_BMP280.h
 
-Plataforma Blynk
+PLATAFORMA BLYNK
 
 Foram utilizados os seguintes pinos virtuais:
 
