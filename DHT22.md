@@ -19,26 +19,6 @@ O sensor DHT22 é utilizado para medir temperatura e umidade relativa do ar atra
 | Tempo de Resposta     | 2 segundos                            |
 | Interface             | 1-Wire (protocolo proprietário)       |
 
-## Pinagem do DHT22
-
-| Pino | Função          | Descrição                     |
-|------|-----------------|-------------------------------|
-| 1    | VCC             | Alimentação (3.3V ou 5V)     |
-| 2    | Data            | Dados do sensor              |
-| 3    | Não Conectado   | Não utilizado                |
-| 4    | GND             | Terra (Ground)               |
-
-## Componentes
-- Módulo sensor DHT22
-- Resistor pull-up 5kΩ-10kΩ (opcional, muitos módulos já incluem)
-- Capacitor de desacoplamento 100nF (opcional)
-
-## Recomendações
-
-- **Resistor Pull-up**: Para comunicação estável, recomenda-se o uso de um resistor pull-up de 5kΩ-10kΩ entre o pino de dados e o VCC.
-- **Capacitor**: Em ambientes ruidosos, use um capacitor de desacoplamento (100nF) entre o VCC e o GND.
-- **Intervalo de Leitura**: Respeite o intervalo mínimo de 2 segundos entre leituras.
-- **Posicionamento**: Instale em local ventilado, longe de fontes de calor direto.
 
 ## Exemplo de Código
 
