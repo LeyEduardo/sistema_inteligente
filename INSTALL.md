@@ -54,9 +54,4 @@ O firmware já usa **SoftAP** para economizar Flash.
 
 ---
 
-## 8) Checklist final
-- [ ] Partição `RainMaker 4MB No OTA` selecionada.
-- [ ] Bibliotecas instaladas.
-- [ ] Firmware gravado sem erros.
-- [ ] SoftAP provisionado (`abcd1234`). (Obs: Temporário)
-- [ ] Cartões operacionais no app.
+
