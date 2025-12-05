@@ -12,9 +12,9 @@ O sensor DHT22 é utilizado para medir temperatura e umidade relativa do ar atra
 | Tipo                  | Sensor digital de temperatura e umidade |
 | Tensão de Operação    | 3.3V a 5.5V                           |
 | Corrente de Operação  | 0.5mA a 2.5mA                         |
-| Faixa de Temperatura  | 0°C a 50°C                            |
+| Faixa de Temperatura  | 0°C a 100°C                            |
 | Precisão Temperatura  | ±2°C                                  |
-| Faixa de Umidade      | 20% a 90%                             |
+| Faixa de Umidade      | 0% a 90%                             |
 | Precisão Umidade      | ±5%                                   |
 | Tempo de Resposta     | 2 segundos                            |
 | Interface             | 1-Wire (protocolo proprietário)       |
@@ -147,6 +147,4 @@ Umidade do Ar: IDEAL
 ## Aplicações no Sistema de Irrigação
 
 - **Monitoramento Ambiental**: Acompanhar condições climáticas em tempo real
-- **Decisão de Irrigação**: Considerar umidade do ar para otimizar irrigação
-- **Economia de Água**: Ajustar irrigação conforme condições atmosféricas
-- **Alerta de Condições Extremas**: Notificar sobre temperaturas ou umidade críticas
+  
