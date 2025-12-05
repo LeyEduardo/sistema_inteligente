@@ -14,7 +14,7 @@ O sensor DHT22 é utilizado para medir temperatura e umidade relativa do ar atra
 | Corrente de Operação  | 0.5mA a 2.5mA                         |
 | Faixa de Temperatura  | 0°C a 100°C                            |
 | Precisão Temperatura  | ±2°C                                  |
-| Faixa de Umidade      | 0% a 90%                             |
+| Faixa de Umidade      | 0% a 100%                             |
 | Precisão Umidade      | ±5%                                   |
 | Tempo de Resposta     | 2 segundos                            |
 | Interface             | 1-Wire (protocolo proprietário)       |
