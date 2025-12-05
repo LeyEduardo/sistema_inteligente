@@ -118,10 +118,9 @@ Consulte **[INSTALL.md](INSTALL.md)** para o passo‑a‑passo completo de setup
 <img width="793" height="322" alt="image" src="https://github.com/user-attachments/assets/b4527c04-1a58-491a-b196-427f774ed8d3" />
 
 <img width="881" height="382" alt="image" src="https://github.com/user-attachments/assets/8542438a-301b-451d-ba62-4a66cb154ed3" />
-<img width="884" height="373" alt="image" src="https://github.com/user-attachments/assets/488fc413-b776-4998-8f24-c72cfeb13f03" />
-<img width="901" height="387" alt="image" src="https://github.com/user-attachments/assets/a7d6f4a4-ba15-46af-85dd-107a8dd38629" />
-<img width="657" height="346" alt="image" src="https://github.com/user-attachments/assets/8e404eb9-8ccc-48f2-8a88-c153abaa2849" />
-<img width="421" height="425" alt="image" src="https://github.com/user-attachments/assets/c71706ae-64bf-4fa4-9095-babe8659861b" />
+
+
+
 <img width="588" height="296" alt="image" src="https://github.com/user-attachments/assets/34074709-81b3-4acd-b9a0-126c37476c75" />
 
 
