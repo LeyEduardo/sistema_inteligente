@@ -92,37 +92,6 @@ void loop() {
 }
 ```
 
-# Saída no Terminal
-
-- Teste de 8 segundos total de 4 leituras
-
-```
-Iniciando leitura do DHT22
-Temperatura: 25.60 °C
-Umidade: 59.00 %
-Sensação Térmica: 26.18 °C
-Ambiente: AGRADÁVEL
-Umidade do Ar: IDEAL
-------------------------
-Temperatura: 25.80 °C
-Umidade: 60.00 %
-Sensação Térmica: 26.42 °C
-Ambiente: AGRADÁVEL
-Umidade do Ar: IDEAL
-------------------------
-Temperatura: 26.00 °C
-Umidade: 58.00 %
-Sensação Térmica: 26.35 °C
-Ambiente: AGRADÁVEL
-Umidade do Ar: IDEAL
-------------------------
-Temperatura: 25.70 °C
-Umidade: 59.50 %
-Sensação Térmica: 26.25 °C
-Ambiente: AGRADÁVEL
-Umidade do Ar: IDEAL
-------------------------
-```
 
 ## Aplicações no Sistema de Irrigação
 
