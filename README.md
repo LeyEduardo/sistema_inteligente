@@ -4,112 +4,125 @@ Sistema Inteligente para Automação e Monitoramento de Condições Ambientais e
 
 # DESCRIÇÂO
 
-O projeto propõe um Sistema Inteligente para Automação e Monitoramento de Condições Ambientais em Residências, capaz de coletar, exibir e reagir a variáveis de ambiente em tempo real. O núcleo é um ESP32 conectado a sensores de temperatura/umidade (DHT22), pressão atmosférica (BMP180 ou equivalente) e gás inflamável/fumaça (MQ-2). As leituras são apresentadas localmente em um display LCD/OLED e remotamente no aplicativo ESP RainMaker, permitindo acompanhamento contínuo e registro simplificado.
+Este projeto consiste no desenvolvimento de um sistema inteligente de monitoramento ambiental residencial, utilizando o microcontrolador ESP32 e sensores ambientais para coleta de dados em tempo real.
+O sistema é capaz de monitorar temperatura, umidade, pressão atmosférica e concentração de gás, exibindo as informações remotamente por meio da plataforma Blynk IoT.
 
-Além do monitoramento, o sistema executa automação doméstica: controla ao menos um atuador — uma lâmpada via relé de estado sólido (SSR) — que pode ser acionada manualmente (um clique no app-RAINMAKER) ou de forma automática conforme parâmetros definidos pelo usuário (por exemplo, ligar a lâmpada quando a luminosidade/estado desejado exigir ou como alerta visual em caso de gás). Para interação natural, o sistema responde a comandos de voz via Alexa, possibilitando ligar/desligar a lâmpada e consultar o estado dos sensores por voz. A arquitetura prioriza simplicidade de instalação, operação confiável (histerese e “report-on-change”), e extensibilidade para novos sensores/atuadores.
-# Monitor Ambiental ESP32 + RainMaker
+O projeto visa aumentar a segurança e o conforto dos ambientes residenciais, permitindo acompanhamento remoto das condições ambientais através do celular.
 
-# OBJETIVO DO PROJETO
+DESCRIÇÃO DO PROJETO
+
+O sistema é composto por:
+
+ESP32 como unidade de controle;
+
+Sensor DHT22 para medir temperatura e umidade;
+
+Sensor MQ-2 para detecção de gases;
+
+Sensor BME280/BMP280 para leitura de pressão atmosférica;
+
+Resistor para condicionamento de sinais;
+
+Comunicação via Wi-Fi com a plataforma Blynk, que exibe os dados em tempo real pelo aplicativo.
+
+O sistema atualiza os dados a cada 2 segundos e permite o monitoramento remoto via smartphone.
+
+OBJETIVO GERAL
+
+Desenvolver um sistema eficiente de monitoramento ambiental residencial utilizando IoT.
+
+OBJETIVO ESPECIFICO
+
+Monitorar temperatura e umidade do ambiente;
+
+Detectar presença de gases potencialmente perigosos;
+
+Medir pressão atmosférica;
+
+Enviar dados em tempo real para o Blynk;
+
+Permitir visualização remota via aplicativo móvel.
+
+ARQUITETURA DO SISTEMA
+
+Diagrama de Comunicação (Descrição)
+
+Sensores → ESP32 → Wi-Fi → Plataforma Blynk → Smartphone
+
+O ESP32 coleta os dados dos sensores e envia para o servidor do Blynk pela conexão Wi-Fi, permitindo acesso remoto pelo celular.
 
 
-# Objetivo Geral
+DIAGRAMA ELETRICO 
+(Descrição das Ligações)
 
-Desenvolver um protótipo funcional de monitoramento ambiental integrado à automação residencial, com visualização local e em nuvem, e controle por voz (Alexa), que permita medir, notificar e atuar sobre o ambiente doméstico de forma segura, responsiva e configurável pelo usuário.
+Componente	Pino do ESP32
 
-# Objetivos Específicos
+DHT22	GPIO 2
 
-1. Aquisição de dados ambientais
+MQ-2 (A0)	GPIO 34
 
-      -Implementar a leitura contínua de temperatura/umidade (DHT22), pressão (BMP180/BMP280) e gás (MQ-2), com debounce lógico e histerese para estados OK / ATENÇÃO / ALERTA.
+BME280 / BMP280 (SDA)	GPIO 21
 
-      -Calibrar faixas e limiares de alerta do MQ-2 para reduzir falsos positivos.
+BME280 / BMP280 (SCL)	GPIO 22
 
-2. Visualização e telemetria
+Alimentação	3.3V / GND
 
-      -Exibir, no LCD/OLED, os valores com unidades (°C, %, hPa) e o estado do gás.
 
-3. Automação de atuadores
+LISTA DE MATERIAL
 
-   -Controlar uma lâmpada via SSR (GPIO dedicado) com:
+Quantidade	Componente
 
-      -Ação manual (botão 1-clique no app).
+1	ESP32
 
-      -Ação automática baseada em parâmetros definidos pelo usuário (ex.: uso como alerta visual quando ALERTA no MQ-2).
+1	Sensor DHT22
 
-   -Registrar e sincronizar estado do atuador entre dispositivo, app e comandos de voz.
+1	Sensor MQ-2
 
-4. Integração com Alexa
+1	Sensor BME280 ou BMP280
 
-      -Disponibilizar rotinas/comandos para ligar/desligar a lâmpada e consultar leituras básicas (temperatura/umidade/pressão).
+1	Resistor (10kΩ ou semelhante)
 
-      -Assegurar autenticação e fluxo de provisionamento simples (ex.: SoftAP/POP) para onboarding do usuário.
+1	Protoboard
 
----
+Jumpers	Cabos macho/macho ou macho/fêmea
 
-## Funcionalidades
 
-- Leitura de **Temperatura (°C)** e **Umidade (%)** via **DHT22**.
-- Leitura de **Pressão (hPa)** via **BMP180 (GY‑68)**.
-- Leitura de **nível (%)** do **MQ‑2** + classificação de **Estado**: `OK`, `ATENÇÃO`, `ALERTA`.
-- Exibição local no **LCD 16x2 I²C** (0x27).
-- Cartões no **ESP RainMaker**:
-  - **Temperatura**, **Umidade**, **Pressão**.
-  - **MQ2**: `Nivel(%)`, `Estado`, `AlarmActive` (somente leitura).
-  - **Alarme** (Power) – **um clique**. Mostra também `Estado` e `AlarmActive` nos detalhes.
-  - **Lâmpada** (Power) – **um clique**.
-- Botão físico (compartilhado no pino do LED de alerta) para alternar o **Power** do **Alarme**.
+PARTE DE SOFTWARE
 
-- Em resumo neste sistema embarcado usou-se como Microcontrolador o **ESP-WROOM-32D** para, captar os dados de sensores como de **Temperatura, Umidade, Pressão** e **gás (MQ‑2)**, com **LCD 16x2 I²C** e controle remoto via **ESP RainMaker**. Possui dois atuadores com **um clique(Liga/Desliga)** no app(Rain Maker):
-- **Alarme** (GPIO33): liga automaticamente quando o estado do MQ‑2 entra em **ALERTA**, desde que o usuário tenha deixado o *Power* ligado.
-- **Lâmpada** (GPIO23):  e controle por voz no app da amazon alexa.
-Provisionamento por **SoftAP/BLE** (POP/senha: `abcd1234`) e particionamento(Arduino-IDE) **RainMaker 4MB No OTA** (recomendado), para não dar problema de espaço no ato de carregar o codigo no microcontrolador.
+Softwares Utilizados
+Software	Versão aproximada
+Arduino IDE
+Blynk IoT	Atual
+ESP32 
 
----
+BIBLIOTECA UTILIZADA
 
-## Hardware
-- **ESP32** (4 MB Flash).
-- **DHT22** (GPIO4).
-- **BMP180 (GY‑68)** I²C em 0x77 (SDA=GPIO21, SCL=GPIO22).
-- **LCD 16x2 I²C** 0x27 (SDA=GPIO21, SCL=GPIO22).
-- **MQ‑2** (AO → **GPIO34**, Vcc 5V, GND) com divisor do módulo.
-- **Alarme** (relé/buzzer) no **GPIO33**.
-- **SSR 1 canal** da **Lâmpada** no **GPIO23**.
-- Fonte 5V/3V3 estável e aterramento comum.
+WiFi.h
 
-> Observação: a biblioteca `LiquidCrystal_I2C` pode emitir um *warning* genérico de compatibilidade – **pode ser ignorado** para ESP32 na prática.
+BlynkSimpleEsp32.h
 
-### Ligações resumidas
-```
-I²C:   SDA -> 21, SCL -> 22  (BMP180 0x77, LCD 0x27)
-DHT22: DATA -> 4
-MQ-2:  AO   -> 34   (usar GND comum; Vcc do módulo e divisor já presentes)
-Alarme: GPIO33 -> driver/relé/buzzer
-Lâmpada(SSR): GPIO23 -> SSR (AC isolado)
-```
+Wire.h
 
----
+Adafruit_Sensor.h
 
-## Software (visão geral)
-- **Arduino IDE** com **Espressif ESP32 core**.
-- Bibliotecas:
-  - `ESP RainMaker` / `RMaker` e `WiFiProv`
-  - `Adafruit BMP085` (BMP180)
-  - `DHT sensor library`
-  - `LiquidCrystal_I2C`
-- **Provisionamento**: **SoftAP** (`PROV_xxxxxx`, senha/POP `abcd1234`).
+DHT.h
 
-Consulte **[INSTALL.md](INSTALL.md)** para o passo‑a‑passo completo de setup e **[docs/arquitetura.md](docs/arquitetura.md)** para a arquitetura do sistema.
+DHT_U.h
 
----
+Adafruit_BME280.h
 
-## Uso
-1. Energize o ESP32 com o hardware conectado.
-2. Abra o app **ESP RainMaker** e escolha **Provision via SoftAP**.
-3. Conecte-se ao SSID exibido (`PROV_xxxxxx`) com a senha `abcd1234`.
-4. Siga o assistente do app para configurar Wi‑Fi e vincular o dispositivo.
-5. Utilize os **cartões** para visualizar variáveis e controlar **Alarme**/**Lâmpada**.
+Adafruit_BMP280.h
 
----
+
+PLATAFORMA BLYNK
+
+
+Foram utilizados os seguintes pinos virtuais:
+Variável	Virtual Pin
+Temperatura	V0
+Umidade	V1
+Pressão	V2
+Gás	V3
 
 ---
 
