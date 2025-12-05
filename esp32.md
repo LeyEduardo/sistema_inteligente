@@ -164,21 +164,7 @@ void loop() {
 }
 ```
 
-# Saída no Terminal
 
-```
-Iniciando ESP32...
-..........
-Wi-Fi conectado!
-IP: 192.168.1.100
-Temp: 25.3°C | Umid.Ar: 58.0% | Umid.Solo: 25%
-Solo seco - Ligando irrigação
-Temp: 25.4°C | Umid.Ar: 58.5% | Umid.Solo: 35%
-Temp: 25.2°C | Umid.Ar: 59.0% | Umid.Solo: 45%
-Temp: 25.1°C | Umid.Ar: 60.0% | Umid.Solo: 65%
-Temp: 25.0°C | Umid.Ar: 61.0% | Umid.Solo: 75%
-Solo úmido - Desligando irrigação
-```
 
 ## Configuração do Ambiente de Desenvolvimento
 
