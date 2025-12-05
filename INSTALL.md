@@ -11,7 +11,7 @@
 
 ## 2) Bibliotecas necessárias
 Instale via **Gerenciador de Bibliotecas** (ou ZIP):
-- `ESP RainMaker` (RMaker)
+- BLynk
 - `WiFiProv`
 - `Adafruit BMP085 Library` (para **BMP180**)
 - `DHT sensor library`
